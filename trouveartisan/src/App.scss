@@ -1,0 +1,65 @@
+$primary-region: #004494;
+$secondary-region: #e2001a;
+$light-gray: #f4f4f4;
+
+$primary: $primary-region;
+$body-bg: $light-gray;
+
+@import "bootstrap/scss/bootstrap";
+
+.App {
+  text-align: center;
+  color: #212529;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+  margin-bottom: 2rem;
+
+  @include media-breakpoint-up(md) {
+    height: 40vmin;
+  }
+}
+
+a:focus, button:focus {
+  outline: 3px solid orange !important;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: $primary;
+  min-height: 60vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: white;
+}
+
+.App-link {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
