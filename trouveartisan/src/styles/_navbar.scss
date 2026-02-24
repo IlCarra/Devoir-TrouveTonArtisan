@@ -1,0 +1,90 @@
+.navbar {
+  background-color: $primary-region !important;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+
+  // Logo della regione
+  .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff !important;
+    
+    &:focus {
+      outline: 3px solid $active-gold;
+      outline-offset: 5px;
+    }
+  }
+
+  // Hamburger Menu (Accessibilità: contrasto alto)
+  .navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    &:focus {
+      box-shadow: 0 0 0 3px $active-gold;
+    }
+  }
+
+  // Link di navigazione
+  .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.2s;
+
+    // Mobile First: Padding maggiore per il tocco (WCAG Touch Targets)
+    padding: 12px 20px;
+
+    &:hover {
+      color: $active-gold !important;
+    }
+
+    // Stato Attivo (React Router NavLink aggiunge la classe .active)
+    &.active {
+      color: #fff !important;
+      font-weight: 600;
+      
+      // Indicatore visivo non basato solo sul colore (WCAG)
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: 1rem;
+        right: 1rem;
+        height: 3px;
+        background-color: $active-gold;
+      }
+    }
+
+    // Focus per navigazione da tastiera
+    &:focus {
+      outline: 3px solid $active-gold !important;
+      outline-offset: -2px;
+      border-radius: 4px;
+    }
+  }
+}
+
+// --- MEDIA QUERIES (Mobile First) ---
+
+// Da tablet/desktop in su
+@include media-breakpoint-up(lg) {
+  .navbar {
+    padding: 0.5rem 2rem;
+
+    .nav-link {
+      padding: 0.5rem 1rem; // Padding standard per desktop
+      
+      &.active::after {
+        bottom: 0; // Riposiziona la linea sotto il testo
+      }
+    }
+  }
+}
+
+// Riduzione del movimento se l'utente lo ha impostato nel sistema (Accessibilità)
+@media (prefers-reduced-motion: reduce) {
+  .navbar, .nav-link {
+    transition: none !important;
+  }
+}

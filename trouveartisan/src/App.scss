@@ -1,11 +1,11 @@
-$primary-region: #004494;
-$secondary-region: #e2001a;
-$light-gray: #f4f4f4;
-
-$primary: $primary-region;
-$body-bg: $light-gray;
+@import "./styles/variables";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
 
 @import "bootstrap/scss/bootstrap";
+
+@import "./styles/navbar";
 
 .App {
   text-align: center;
