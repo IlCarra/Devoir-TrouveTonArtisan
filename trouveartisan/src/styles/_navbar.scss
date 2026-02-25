@@ -52,16 +52,6 @@
     &.active {
       color: #fff !important;
       font-weight: 600;
-      
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 5px;
-        left: 1rem;
-        right: 1rem;
-        height: 3px;
-        background-color: $active-gold;
-      }
     }
 
     &:focus {

@@ -1,0 +1,15 @@
+.main-footer {
+    background-color: #004494;
+
+    .footer-links li{
+        margin-bottom: 8px;
+        cursor: pointer;
+        &:hover {
+            color: #ffcc00
+        }
+    }
+
+    address {
+        line-height: 1.6;
+    }
+}

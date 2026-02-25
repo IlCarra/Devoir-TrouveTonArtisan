@@ -13,7 +13,6 @@ function Header() {
 
             <Navbar bg="primary" variant="dark" expand="lg" sticky="top" collapseOnSelect>
                 <Container>
-                    {/* Logo / Brand */}
                     <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center">
                         <img src="/logo.png" alt="Auvergne-Rhone-Alpes" className="navbar-logo" />
                     </Navbar.Brand>
