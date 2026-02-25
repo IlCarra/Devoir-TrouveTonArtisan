@@ -1,14 +1,27 @@
 .navbar {
   background-color: $primary-region !important;
-  padding: 0.8rem 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease-in-out;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  min-height: 140px;
 
-  // Logo della regione
+  .container {
+    align-items: center;
+  }
+}
+
   .navbar-brand {
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #fff !important;
+    padding: 0;
+    margin-right: 2rem;
+
+    .navbar-logo {
+      height: 100px;
+      width: auto;
+      transition: all 0.3s ease;
+          
+        @include media-breakpoint-up(md) {
+          height: 140px;
+      }
+    }
     
     &:focus {
       outline: 3px solid $active-gold;
@@ -16,7 +29,6 @@
     }
   }
 
-  // Hamburger Menu (Accessibilità: contrasto alto)
   .navbar-toggler {
     border: 2px solid rgba(255, 255, 255, 0.5);
     &:focus {
@@ -24,27 +36,23 @@
     }
   }
 
-  // Link di navigazione
   .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 0.95rem;
-    padding: 0.5rem 1rem;
-    position: relative;
+    display: flex;
+    align-items: center;
     transition: color 0.2s;
 
-    // Mobile First: Padding maggiore per il tocco (WCAG Touch Targets)
     padding: 12px 20px;
 
     &:hover {
       color: $active-gold !important;
     }
 
-    // Stato Attivo (React Router NavLink aggiunge la classe .active)
     &.active {
       color: #fff !important;
       font-weight: 600;
       
-      // Indicatore visivo non basato solo sul colore (WCAG)
       &::after {
         content: "";
         position: absolute;
@@ -56,14 +64,12 @@
       }
     }
 
-    // Focus per navigazione da tastiera
     &:focus {
       outline: 3px solid $active-gold !important;
       outline-offset: -2px;
       border-radius: 4px;
     }
   }
-}
 
 // --- MEDIA QUERIES (Mobile First) ---
 
