@@ -14,8 +14,8 @@ function Header() {
             <Navbar bg="primary" variant="dark" expand="lg" sticky="top" collapseOnSelect>
                 <Container>
                     {/* Logo / Brand */}
-                    <Navbar.Brand as={NavLink} to="/" className="fw-bold">
-                        Région Auvergne-Rhône-Alpes
+                    <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center">
+                        <img src="/logo.png" alt="Auvergne-Rhone-Alpes" className="navbar-logo" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="main-navbar-nav" aria-label="Menu de navigation" />
 
