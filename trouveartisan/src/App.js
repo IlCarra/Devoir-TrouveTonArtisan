@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/navbar';
 import Footer from './components/footer';
 
+import Home from './pages/home';
+
 // Importa i tuoi stili
 import './App.scss';
 
@@ -16,7 +18,7 @@ function App() {
 
         <main id="main-content" className="flex-grow-1" role="main">
           <Routes>
-            <Route path="/"/>
+            <Route path="/" element={<Home />}/>
             {/* Aggiungi qui le altre rotte man mano che crei le pagine */}
           </Routes>
         </main>
