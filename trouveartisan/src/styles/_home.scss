@@ -1,0 +1,56 @@
+.home-page {
+    .hero-section {
+        .hero-box{
+            background-color: #384050;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            letter-spacing: -1px;
+        }
+
+        .btn-light {
+            color: #343a40;
+            transition: transform 0.2s;
+            &:hover {
+                transform: scale(1.05);
+                background-color: #82B864;
+            }
+        }
+    }
+
+    .how-it-works {
+        background-color: #f1f8fc !important;
+        max-width: 1300px;
+        margin: 0 auto;
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #343a40;
+        }
+        
+        .step-card {
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translateY(-10px);
+                background-color: #00497c;
+
+                .step-number {
+                    color: #f1f8fc !important;
+                }
+
+                .card-text, p {
+                    color: #f1f8fc !important;
+                }
+            }
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6c757d;
+        }
+    }
+}
