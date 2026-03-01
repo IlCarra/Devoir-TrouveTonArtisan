@@ -6,6 +6,7 @@ import Header from './components/navbar';
 import Footer from './components/footer';
 
 import Home from './pages/home';
+import Artisan from './pages/artisan';
 
 // Importa i tuoi stili
 import './App.scss';
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             {/* Aggiungi qui le altre rotte man mano che crei le pagine */}
+            <Route path="/artisan/:id" element={<Artisan />} />
           </Routes>
         </main>
 
