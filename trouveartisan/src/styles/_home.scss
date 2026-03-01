@@ -54,3 +54,27 @@
         }
     }
 }
+
+.bg-light-blue-section {
+    background-color: #f1f8fc;
+    border: 1px solid #e1eef5;
+}
+
+.artisan-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .profile-icon-container {
+        text-align: left;
+        color: #000;
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.1) !important;
+        background-color: #00497c;
+        color: white;
+
+        .text-muted { color: #cbd5e0 !important; }
+        .profile-icon-container { color: white; }
+        }
+}
