@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import {Container, Row, Col, Card} from 'react-bootstrap';
+import ContactForm from "../components/contactForm";
 
 const artisanInfo = [
     { id: 1, nom: "Jean Professional", etoiles: 5, specialite: "Plombier", adresse: "Paris" },
@@ -73,6 +74,73 @@ function Artisan() {
                     </div>
                 </Container>
             </section>
+
+            
+            <Container className="mt-5">
+                <div className="bg-light-blue-section p-4 p-md-5 rounded-5 shadow-sm text-start">
+                    <h2 className="fw-bold mb-4">A propos</h2>
+    
+                    <div className="about-content">
+                        <div className="d-flex align-items-start mb-4">
+                            <div className="icon-box me-4">
+                                <i className="bi bi-person-vcard text-primary fs-2"></i>
+                            </div>
+                            <div>
+                                <h4 className="fw-bold mb-1">Courte Biographie</h4>
+                                <p className="text-muted fs-5">
+                                    {artisan.biographie || "Texto biographie artisan..."}
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div className="d-flex align-items-start mb-4">
+                            <div className="me-3 fs-3">
+                                <i className="bi bi-tools text-danger fs-2"></i>
+                            </div>
+                            <div>
+                                <h4 className="fw-bold mb-1">Expérience dans le secteur</h4>
+                                <p className="text-muted fs-5">
+                                    {artisan.experience || "Details sur l'expérience pro de l'artisan"}
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div className="d-flex align-items-start mb-4">
+                            <div className="icon-box me-4">
+                                <i className="bi bi-shield-check text-info fs-2"></i>
+                            </div>
+                            <div>
+                                <h4 className="fw-bold mb-1">Garantie (Certificat, diplomes...)</h4>
+                                <p className="text-muted fs-5">
+                                    {artisan.garantie || "Informations sur les diplomes et certificat de l'artisan"}
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div className="d-flex align-items-start mb-4">
+                            <div className="icon-box me-4">
+                                <i className="bi bi-compass text-secondary fs-2"></i>
+                            </div>
+                            <div>
+                                <h4 className="fw-bold mb-1">Valeurs et philosophie</h4>
+                                <p className="text-muted fs-5">
+                                    {artisan.valeurs || "Philosophie et valeurs du travail de l'artisan"}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Container>
+
+            <Container className="mt-4 mb-5">
+                <div className="bg-light-blue-section p-4 p-md-5 rounded-5 shadow-sm">
+                    <h2 className="fw-bold mb-4">
+                        Contactez votre artisan
+                    </h2>
+
+                    <ContactForm />
+                </div>
+            </Container>
         </div>
     );
 };
