@@ -45,7 +45,7 @@ const ContactForm = () => {
                         <Form.Control 
                             as="textarea" 
                             className="rounded-4 border-0 shadow-sm flex-grow-1" 
-                            style={{ resize: 'none', minHeight: '200px' }}
+                            
                         />
                     </Form.Group>
                 </Col>

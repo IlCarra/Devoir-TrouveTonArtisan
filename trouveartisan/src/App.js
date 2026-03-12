@@ -7,6 +7,8 @@ import Footer from './components/footer';
 
 import Home from './pages/home';
 import Artisan from './pages/artisan';
+import NotFound from './pages/notFound';
+import UnderConstruction from './pages/underConstruction';
 
 // Importa i tuoi stili
 import './App.scss';
@@ -22,6 +24,9 @@ function App() {
             <Route path="/" element={<Home />}/>
             {/* Aggiungi qui le altre rotte man mano che crei le pagine */}
             <Route path="/artisan/:id" element={<Artisan />} />
+            <Route path="/construction" element={<UnderConstruction />} />
+
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
 
