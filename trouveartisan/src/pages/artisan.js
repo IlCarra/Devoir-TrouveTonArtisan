@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import {Container, Row, Col, Card} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import ContactForm from "../components/contactForm";
 
 const artisanInfo = [
-    { id: 1, nom: "Jean Professional", etoiles: 5, specialite: "Plombier", adresse: "Paris" },
-    { id: 2, nom: "Marc Bricole", etoiles: 4.5, specialite: "Électricien", adresse: "Lyon" },
-    { id: 3, nom: "Lucie Design", etoiles: 4, specialite: "Peintre", adresse: "Marseille" }
+    { id: 1, nom: "John Doe", etoiles: 5, specialite: "Plombier", adresse: "15 Rue de la Republique, Paris" },
+    { id: 2, nom: "Jeane Doe", etoiles: 4.5, specialite: "Électricien", adresse: "65 Rue de Tonkin, Lyon" },
+    { id: 3, nom: "Lucie Design", etoiles: 4, specialite: "Peintre", adresse: "7 Rue du vieux port, Marseille" }
 ];
 
 function Artisan() {
@@ -42,7 +42,7 @@ function Artisan() {
                                     
                                     {/* Icone Profile */}
                                     <div className="profile-icon-wrapper bg-white rounded-circle d-inline-flex align-items-center justify-content-center3" style={{ width: '180px', height: '180px' }}>
-                                        <i className="bi bi-person-circle text-dark" style={{ fontSize: '10rem' }}></i>
+                                        <i className="bi bi-person-circle text-dark profile-icon"></i>
                                     </div>
                             </Col>
 

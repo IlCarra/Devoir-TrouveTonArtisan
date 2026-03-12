@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -8,11 +9,11 @@ function Footer() {
                     <div className="col-md-5 col-sm-12 mb-4">
                         <h4>Lorem Ipsum</h4>
                         <ul className="list-unstyled footer-links">
-                            <li>Mentions légales</li>
-                            <li>Données personnelles</li>
-                            <li>Accessibilité</li>
-                            <li>Conditions générales de vente (CGV)</li>
-                            <li>Conditions générales d'utilisation (CGU)</li>
+                            <li><Link to="/construction" className="text-white text-decoration-none">Mentions légales</Link></li>
+                            <li><Link to="/construction" className="text-white text-decoration-none">Données personnelles</Link></li>
+                            <li><Link to="/construction" className="text-white text-decoration-none">Accessibilité</Link></li>
+                            <li><Link to="/construction" className="text-white text-decoration-none">Conditions générales de vente (CGV)</Link></li>
+                            <li><Link to="/construction" className="text-white text-decoration-none">Conditions générales d'utilisation (CGU)</Link></li>
                         </ul>
                     </div>
                     <div className="col-md-5 col-sm-12 text-md-end">
