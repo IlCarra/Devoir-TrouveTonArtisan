@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // 1. Importa il componente Header (Navbar)
@@ -9,6 +9,7 @@ import Home from './pages/home';
 import Artisan from './pages/artisan';
 import NotFound from './pages/notFound';
 import UnderConstruction from './pages/underConstruction';
+import Recherche from './pages/recherche';
 
 // Importa i tuoi stili
 import './App.scss';
@@ -22,7 +23,7 @@ function App() {
         <main id="main-content" className="flex-grow-1" role="main">
           <Routes>
             <Route path="/" element={<Home />}/>
-            {/* Aggiungi qui le altre rotte man mano che crei le pagine */}
+            <Route path="/recherche" element={<Recherche />} />
             <Route path="/artisan/:id" element={<Artisan />} />
             <Route path="/construction" element={<UnderConstruction />} />
 

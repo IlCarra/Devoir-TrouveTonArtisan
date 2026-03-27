@@ -7,6 +7,15 @@
   .container {
     align-items: center;
   }
+
+  .form-control {
+    border-radius: 20px;
+    border: none;
+    padding-left: 15px;
+    &:focus {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+  }
 }
 
   .navbar-brand {
