@@ -1,10 +1,18 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
+import { Navbar, Nav, Container, Form, FormControl } from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 
 function Header() {
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            const valor = e.target.value;
+            navigate(`/recherche?q=${valor}`);
+        }
+    }; 
+
     return (
         <header role = "banner">
             <a href="#main-content" className="visually-hidden-focusable p-2 bg-primary text-white">
@@ -32,6 +40,17 @@ function Header() {
                             <Nav.Link as={NavLink} to="/accessibilité" className="border border-light rounded px-2 ms-lg-2">
                                 Accessibilité
                             </Nav.Link>
+
+                            <Form className="d-flex ms-lg-3 mt-3 mt-lg-0" onSubmit={(e) => e.preventDefault()}>
+                                <FormControl
+                                    type="search"
+                                    placeholder="Rechercher..."
+                                    className="me-2"
+                                    aria-label="Search"
+                                    onKeyDown={handleSearch} 
+                                />
+                            </Form>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
