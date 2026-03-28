@@ -70,24 +70,22 @@
     }
   }
 
-// --- MEDIA QUERIES (Mobile First) ---
 
-// Da tablet/desktop in su
 @include media-breakpoint-up(lg) {
   .navbar {
     padding: 0.5rem 2rem;
 
     .nav-link {
-      padding: 0.5rem 1rem; // Padding standard per desktop
+      padding: 0.5rem 1rem;
       
       &.active::after {
-        bottom: 0; // Riposiziona la linea sotto il testo
+        bottom: 0;
       }
     }
   }
 }
 
-// Riduzione del movimento se l'utente lo ha impostato nel sistema (Accessibilità)
+
 @media (prefers-reduced-motion: reduce) {
   .navbar, .nav-link {
     transition: none !important;

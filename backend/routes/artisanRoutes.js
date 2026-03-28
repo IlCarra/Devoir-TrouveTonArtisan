@@ -8,7 +8,14 @@ const { Op } = require('sequelize');
 router.get('/search', async (req, res) => {
     const query = req.query.q || '';
     const results = await Artisan.findAll({
-        where: { nom: {[Op.like]: `%${query}%` } }
+        where: { 
+            [Op.or]: [
+                {nom: {[Op.like]: `%${query}`}},
+                { spécialité: { [Op.like]: `%${query}%` } },
+                { categorie: { [Op.like]: `%${query}%` } },
+                { localisation: { [Op.like]: `%${query}%` } }
+            ]
+        }
     });
     res.json(results);
 });
