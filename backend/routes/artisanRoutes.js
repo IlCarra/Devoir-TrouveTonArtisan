@@ -9,8 +9,8 @@ router.get('/search', async (req, res) => {
     const query = req.query.q || '';
     const results = await Artisan.findAll({
         where: { 
-            [Op.or]: [
-                {nom: {[Op.like]: `%${query}`}},
+            [Op.op]: [
+                {nom: {[Op.like]: `%${query}%`}},
                 { spécialité: { [Op.like]: `%${query}%` } },
                 { categorie: { [Op.like]: `%${query}%` } },
                 { localisation: { [Op.like]: `%${query}%` } }
@@ -21,8 +21,15 @@ router.get('/search', async (req, res) => {
 });
 
 router.get('/top', async (req, res) => {
-    const topArtisans = await Artisan.findAll({ where: {top: 1} });
-    res.json(topArtisans);
+    try {
+        const topArtisans = await Artisan.findAll({
+            order: [['note', 'DESC']],
+            limit: 3
+        });
+        res.json(topArtisans);
+    } catch (error) {
+        res.status(500).json({ error: error.message});
+    }
 });
 
 router.get('/categorie/:cat', async (req, res) => {

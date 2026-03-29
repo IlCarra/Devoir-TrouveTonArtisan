@@ -1,14 +1,18 @@
-import React from "react";
 import {Container, Row, Col, Button, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-
-const artisanDuMois = [
-    {id: 1, nom: "Nom artisan N°1", etoiles: 5},
-    {id: 2, nom: "Nom artisan N°2", etoiles: 4.5},
-    {id: 3, nom: "Nom artisan N°3", etoiles: 4}
-];
+import React, { useState, useEffect } from "react";
 
 function Home() {
+    const [artisans, setArtisans] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/top')
+            .then(res => res.json())
+            .then(data => setArtisans(data))
+            .catch(err => console.error("Erreur dans le chargement du Top Artisans:", err));
+    }, []);
+
+
     const renderStars = (rating) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
@@ -76,7 +80,7 @@ function Home() {
                     </h2>
 
                     <Row className="g-4 justify-content-center">
-                        {artisanDuMois.map((artisan) => (
+                        {artisans.map((artisan) => (
                             <Col key={artisan.id} lg={4} md={6} xs={12}>
                                 <Link to={`/artisan/${artisan.id}`} className="text-decoration-none text-dark">
                                     <Card className="h-100 border-0 shadow-sm artisan-card rounded-4 p-3">
@@ -87,12 +91,20 @@ function Home() {
                                             </div>
     
                                             <Card.Title className="fw-bold h5">{artisan.nom}</Card.Title>
-                                            <Card.Text className="mb-1">Spécialité</Card.Text>
-                                            <Card.Text className="text-muted mb-3">Adresse artisan N°{artisan.id}</Card.Text>
+
+                                            <Card.Text className="mb-1 fw-bold text-primary">
+                                                {artisan.spécialité}
+                                            </Card.Text>
+
+                                            <Card.Text className="text-muted mb-3">
+                                                <i className='bi bi-geo-alt-fill me-1'></i>
+                                                {artisan.localisation}
+                                            </Card.Text>
         
                                             {/* Etoiles */}
                                             <div className="rating-stars">
-                                                {renderStars(artisan.etoiles)}
+                                                {renderStars(artisan.note)}
+                                                <span className='ms-2 text-muted'>({artisan.note})</span>
                                             </div>
                                         </Card.Body>
                                     </Card>
