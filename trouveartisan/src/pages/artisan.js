@@ -1,18 +1,27 @@
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Spinner} from 'react-bootstrap';
 import ContactForm from "../components/contactForm";
-
-const artisanInfo = [
-    { id: 1, nom: "John Doe", etoiles: 5, specialite: "Plombier", adresse: "15 Rue de la Republique, Paris" },
-    { id: 2, nom: "Jeane Doe", etoiles: 4.5, specialite: "Électricien", adresse: "65 Rue de Tonkin, Lyon" },
-    { id: 3, nom: "Lucie Design", etoiles: 4, specialite: "Peintre", adresse: "7 Rue du vieux port, Marseille" }
-];
 
 function Artisan() {
     const { id } = useParams();
-    const artisan = artisanInfo.find(a => a.id == id);
+    const [artisan, setArtisan] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-        const renderStars = (rating) => {
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/artisan/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            setArtisan(data);
+            setLoading(false);
+        })
+        .catch(err => {
+            console.error("Erreur dans la recuperation de l'artisan:", err);
+            setLoading(false);
+        });
+    }, [id]);
+
+    const renderStars = (rating) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
             if (i <= Math.floor(rating)) {
@@ -26,8 +35,20 @@ function Artisan() {
         return stars;
     };
 
-    if (!artisan) {
-        return <Container className="py-5 text-center"><h2>Artisat non trovato</h2></Container>;
+    if (loading) {
+        return (
+            <Container className="py-5 text-center">
+                <Spinner animation="border" variant="primary" />
+            </Container>
+        );
+    }
+
+    if (!artisan || artisan.message) {
+        return (
+            <Container className="py-5 text-center">
+                <h2>Artisan pas touvé</h2>
+            </Container>
+        )
     }
 
     return (
@@ -52,22 +73,25 @@ function Artisan() {
                                 <div className="artisan-details fs-5">
                                     <p className="mb-2">
                                         <span className="opacity-75">Spécialité: </span> 
-                                        <strong>{artisan.specialite}</strong>
+                                        <strong>{artisan.spécialité}</strong>
                                     </p>
 
                                     <p className="mb-2">
-                                        <span className="opacity-75">Adresse: </span> 
-                                        <strong>{artisan.adresse}</strong>
+                                        <span className="opacity-75">Localisation </span> 
+                                        <strong>{artisan.localisation}</strong>
                                     </p>
 
                                     <p className="mb-4">
                                         <span className="opacity-75">Site web: </span> 
-                                        <a href="#" className="text-white text-decoration-underline">www.artisan.fr</a>
+                                        <a href={artisan.website} target="_blank" rel="norefferer" className="text-white text-decoration-underline">
+                                            {artisan.website || "Pas disponible"}
+                                        </a>
                                     </p>
                                 </div>
 
                                 <div className="rating-stars">
-                                    {renderStars(artisan.etoiles)}
+                                    {renderStars(artisan.note)}
+                                    <span className="ms-2">({artisan.note})</span>
                                 </div>                                
                             </Col>
                         </Row>
@@ -135,7 +159,7 @@ function Artisan() {
             <Container className="mt-4 mb-5">
                 <div className="bg-light-blue-section p-4 p-md-5 rounded-5 shadow-sm">
                     <h2 className="fw-bold mb-4">
-                        Contactez votre artisan
+                        Contactez {artisan.nom}
                     </h2>
 
                     <ContactForm />

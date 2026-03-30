@@ -28,7 +28,7 @@ function Home() {
     };
 
     const steps = [
-        {id:1, text: "Choisir la catégorie d'artisanat dans le menu."},
+        {id:1, text: "Ecrire l'artisan ou la spécialisation que vous cherchez."},
         {id:2, text: "Choisir un artisan."},
         {id:3, text: "Le contacter via le formulaire de contact."},
         {id:4, text: "Une réponse sera apportée sous 48h."}
@@ -43,9 +43,6 @@ function Home() {
                         <h1 className="display-5 fw-bold text-white mb-4">
                             Trouvez l'artisasn parfait pour vos projets
                         </h1>
-                        <Button variant="light" size="lg" className="px-5 rounded-pill fw-bold">
-                            Commencer
-                        </Button>
                     </div>
                 </Container>
             </section>
