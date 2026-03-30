@@ -1,23 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const Artisan = require('../models/Artisan');
-const { Op } = require('sequelize');
+const Sequelize = require('sequelize');
 
 
 
 router.get('/search', async (req, res) => {
-    const query = req.query.q || '';
-    const results = await Artisan.findAll({
-        where: { 
-            [Op.op]: [
-                {nom: {[Op.like]: `%${query}%`}},
-                { spécialité: { [Op.like]: `%${query}%` } },
-                { categorie: { [Op.like]: `%${query}%` } },
-                { localisation: { [Op.like]: `%${query}%` } }
-            ]
-        }
-    });
-    res.json(results);
+    try {
+        const query = req.query.q || '';
+        const searchPattern = `%${query}%`;
+
+        const results = await Artisan.findAll({
+            where: Sequelize.literal(`
+                (nom LIKE :pattern OR
+                spécialité LIKE :pattern OR
+                categorie LIKE :pattern OR
+                localisation LIKE :pattern) 
+                `),
+                replacements: { pattern: searchPattern }
+        });
+
+        res.json(results);
+    } catch (error) {
+        console.error("Erreur SQL dettaillé:", error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
 router.get('/top', async (req, res) => {
