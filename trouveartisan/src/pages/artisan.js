@@ -83,9 +83,18 @@ function Artisan() {
 
                                     <p className="mb-4">
                                         <span className="opacity-75">Site web: </span> 
-                                        <a href={artisan.website} target="_blank" rel="norefferer" className="text-white text-decoration-underline">
-                                            {artisan.website || "Pas disponible"}
-                                        </a>
+                                        {artisan.website ? (
+                                            <a
+                                                href={artisan.website.startsWith('http') ? artisan.website : `https://${artisan.web}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-white text-decoration-underline fw-bold"
+                                            >
+                                                {new URL(artisan.website.startsWith('http') ? artisan.website : `https://${artisan.website}`).hostname}
+                                            </a>
+                                        ) : (
+                                            <span className="text-white-50">Non reseigné</span>
+                                        )}
                                     </p>
                                 </div>
 
