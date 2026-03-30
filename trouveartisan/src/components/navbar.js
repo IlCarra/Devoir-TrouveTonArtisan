@@ -31,14 +31,17 @@ function Header() {
                             <Nav.Link as={NavLink} to="/" end>
                                 Accueil
                             </Nav.Link>
-                            <Nav.Link as={NavLink} to="/batiments" end>
+                            <Nav.Link as={NavLink} to="/recherche?q=Batiment" end>
                                 Batiments
                             </Nav.Link>
-                            <Nav.Link as={NavLink} to="/services" end>
+                            <Nav.Link as={NavLink} to="/recherche?q=Service" end>
                                 Services
                             </Nav.Link>
-                            <Nav.Link as={NavLink} to="/accessibilité" className="border border-light rounded px-2 ms-lg-2">
-                                Accessibilité
+                            <Nav.Link as={NavLink} to="/recherche?q=Fabrication" end>
+                                Fabrication
+                            </Nav.Link>
+                            <Nav.Link as={NavLink} to="/recherche?q=Alimentation" end>
+                                Alimentation
                             </Nav.Link>
 
                             <Form className="d-flex ms-lg-3 mt-3 mt-lg-0" onSubmit={(e) => e.preventDefault()}>

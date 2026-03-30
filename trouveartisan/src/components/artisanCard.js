@@ -29,7 +29,7 @@ const ArtisanCard = ({ artisan }) => {
                     {renderStars(artisan.note)}
                 </div>
 
-                <Link to={`/artisan${artisan.id}`}>
+                <Link to={`/artisan/${artisan.id}`}>
                     <Button variant="primary" className='rounded-pill px-4 fw-bold w-100'>
                         Voir profile
                     </Button>
